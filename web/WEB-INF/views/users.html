@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div th:insert="templates/header :: copy"></div>
+
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#id</th>
+            <th scope="col">User</th>
+            <th scope="col">Role</th>
+            <th scope="col">Update</th>
+            <th scope="col">Delete</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${users}">
+            <td th:text="${user.id}">Onions</td>
+            <td th:text="${user.name}">2.41</td>
+            <td th:text="${user.role.name}">2.41</td>
+            <td><a th:href="@{/edit/{id}(id=${user.id})}" class="btn btn-warning">Change</a></td>
+            <td><a th:href="@{/delete-user/{id}(id=${user.id})}" class="btn btn-danger">Delete</a></td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+</body>
+</html>
